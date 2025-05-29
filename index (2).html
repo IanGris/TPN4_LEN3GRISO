@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Lista de Productos</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f7f7f7;
+      margin: 0;
+      padding: 20px;
+    }
+    h1 {
+      text-align: center;
+      color: #333;
+    }
+    .container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+    }
+    .card {
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      padding: 15px;
+      width: 250px;
+      transition: transform 0.2s;
+    }
+    .card:hover {
+      transform: scale(1.05);
+    }
+    .card h2 {
+      font-size: 1.2em;
+      color: #0077cc;
+    }
+    .card p {
+      margin: 5px 0;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Lista de Productos</h1>
+  <div class="container" id="productContainer"></div>
+
+  <script>
+    // Objeto literal con una lista de productos
+    const productos = [
+      { nombre: "Notebook", precio: 1200, categoria: "Tecnología", stock: 15 },
+      { nombre: "Mouse inalámbrico", precio: 25, categoria: "Accesorios", stock: 40 },
+      { nombre: "Teclado mecánico", precio: 70, categoria: "Accesorios", stock: 20 },
+      { nombre: "Monitor LED", precio: 300, categoria: "Tecnología", stock: 10 },
+      { nombre: "Auriculares Bluetooth", precio: 50, categoria: "Audio", stock: 25 },
+      { nombre: "Cámara Web", precio: 90, categoria: "Accesorios", stock: 18 },
+      { nombre: "Impresora", precio: 150, categoria: "Oficina", stock: 8 },
+      { nombre: "Silla ergonómica", precio: 200, categoria: "Muebles", stock: 12 },
+      { nombre: "Tablet", precio: 350, categoria: "Tecnología", stock: 22 }
+    ];
+
+    // Seleccionar contenedor
+    const container = document.getElementById('productContainer');
+
+    // Usar map para generar las tarjetas
+    productos.map(producto => {
+      const card = document.createElement('div');
+      card.className = 'card';
+      card.innerHTML = `
+        <h2>${producto.nombre}</h2>
+        <p><strong>Precio:</strong> $${producto.precio}</p>
+        <p><strong>Categoría:</strong> ${producto.categoria}</p>
+        <p><strong>Stock:</strong> ${producto.stock} unidades</p>
+      `;
+      container.appendChild(card);
+    });
+  </script>
+
+</body>
+</html>
